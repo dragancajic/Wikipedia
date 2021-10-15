@@ -1,0 +1,39 @@
+//noinspection GradleCompatible
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "org.eu5.learn_pisio.wikipedia"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    /* ... but, you don't need THIS HERE, it's redundant!!!
+    // try here also -> Драган Ћајић on 5:31 PM October 15, 2021
+    repositories {
+        google()
+        jcenter() // it's read only now!
+        // use maven repository
+        mavenCentral()
+    }*/
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //compile 'com.android.support:appcompat-v7:28.+' // <-- Avoid using + in version numbers!
+    compile 'com.android.support:appcompat-v7:28.0.0' // <-- final version of Support Libraries!
+    testCompile 'junit:junit:4.12'
+}
